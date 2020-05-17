@@ -81,44 +81,37 @@ y = df_names.sex
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
 #====================================================================================
-#						# Naive Bayes Classifier
+#						TRAINING DECISION TREE
 #====================================================================================
 
-from sklearn.naive_bayes import MultinomialNB
-clf = MultinomialNB()
-clf.fit(X_train,y_train)
-clf.score(X_test,y_test)
+from sklearn.tree import DecisionTreeClassifier
+print('fitting')
+clf = DecisionTreeClassifier()
+clf.fit(X_train, y_train)
+clf.score(X_test, y_test)
+
+
+
 
 # Accuracy of our Model
 print("Accuracy of Model",clf.score(X_test,y_test)*100,"%")
 
-"""
-#---------------------------------------
-#		PREDICTIONS FOR INFO
-#---------------------------------------
-# First cv = countvectorizer, then we do X = cv.fit_transform(Xfeatures)... 
-# (even tho it equals x, it is still fitted)now this.
-vect = cv.transform(["Mary"]).toarray()
-print(clf.predict(vect))
-"""
+
+
 
 #---------------------------------------
 #		BULK PREDICTIONS
 #---------------------------------------
-sample_name = ["Adam","David","Ama","Ayo","Xhavier","Ovetta","Tathiana","Xia","Joseph","Xianliang"]
+sample_name = ["Nefertiti","Nasha","Ama","Ayo","Xhavier","Ovetta","Tathiana","Xia","Joseph","Xianliang"]
 
 # A function to do it
 def genderpredictor(a):
     test_name = [a]
     vector = cv.transform(test_name).toarray()
     if clf.predict(vector) == 0:
-    	print(str(test_name) + " is Female")
-    	return("Female")
-        
+        print(str(test_name) + " is Female")
     else:
-    	print(str(test_name) + " is Male")
-    	return("Male")
-        
+        print(str(test_name) + " is Male")
 
 for n in sample_name:
 	genderpredictor(n)
@@ -131,7 +124,7 @@ for n in sample_name:
 import joblib
 
 print('Saving Model')
-NaiveBayesModel = open("models/nbGenderModel.pkl","wb")
+NaiveBayesModel = open("models/dcGenderModel.pkl","wb")
 joblib.dump(clf,NaiveBayesModel)
 NaiveBayesModel.close()
 
