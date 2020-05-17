@@ -92,9 +92,19 @@ clf.score(X_test,y_test)
 # Accuracy of our Model
 print("Accuracy of Model",clf.score(X_test,y_test)*100,"%")
 
-# Sample1 Prediction
-sample_name = ["Mary"]
-vect = cv.transform(sample_name).toarray()
+#---------------------------------------
+#		PREDICTIONS
+#---------------------------------------
+
+vect = cv.transform(["Mary"]).toarray()
 
 # Uncomment to see vector structure 
-# vect
+print('Mary as vector is..')
+print(len(vect))
+print('')
+# Female is 0, Male is 1
+print('Predicting if Mary is a boy or girl')
+print('0=girl, 1=boy')
+print(clf.predict(vect))
+
+
