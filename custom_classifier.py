@@ -1,5 +1,6 @@
 """
 Classify Gender from a name
+# FLOW: Features function, apply funciton, vectorise, fit, transform, classify, fit, predict
 """
 
 #====================================================================================
@@ -124,10 +125,3 @@ for n in sample_name:
 #---------------------------------------
 #		SAVE MODEL
 #---------------------------------------
-import joblib
-
-print('Saving Model')
-NaiveBayesModel = open("models/nbGenderModel.pkl","wb")
-joblib.dump(clf,NaiveBayesModel)
-NaiveBayesModel.close()
-
