@@ -1,1 +1,1 @@
-web: setup.sh && streamlit run mcmurchie-gender.py
+web: sh setup.sh && streamlit run mcmurchie-gender.py
