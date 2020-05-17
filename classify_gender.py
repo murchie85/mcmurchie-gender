@@ -64,6 +64,9 @@ Xfeatures =df_names['name']
 cv = CountVectorizer()
 X = cv.fit_transform(Xfeatures)
 
+# Required for importing
+vectorizer = cv.fit(Xfeatures)
+
 #print('Get all names')
 #cv.get_feature_names()
 
@@ -134,4 +137,8 @@ print('Saving Model')
 NaiveBayesModel = open("models/nbGenderModel.pkl","wb")
 joblib.dump(clf,NaiveBayesModel)
 NaiveBayesModel.close()
+
+
+vectorOut = open("models/vectorizer.pkl","wb")
+joblib.dump(vectorizer, vectorOut)
 

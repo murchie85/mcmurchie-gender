@@ -112,6 +112,8 @@ dfX_train
 dv = DictVectorizer()
 dv.fit_transform(dfX_train)
 
+vectorizer = dv.fit(dfX_train)
+
 
 #====================================================================================
 #						TRAINING DECISION TREE
@@ -172,3 +174,6 @@ dctreeModel = open("models/namesdetectormodel.pkl","wb")
 pickle.dump(dclf,dctreeModel)
 dctreeModel.close()
 """
+
+vectorOut = open("models/DCvectorizer.pkl","wb")
+joblib.dump(vectorizer, vectorOut)
